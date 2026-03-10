@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Define the internationalization functionality
  *
@@ -33,13 +37,7 @@ class Admin_Performance_Inspector_i18n {
 	 * @since    1.0.0
 	 */
 	public function load_plugin_textdomain() {
-
-		load_plugin_textdomain(
-			'admin-performance-inspector',
-			false,
-			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
-		);
-
+		// load_plugin_textdomain() is discouraged since WP 4.6 for plugins hosted on WP.org.
 	}
 
 

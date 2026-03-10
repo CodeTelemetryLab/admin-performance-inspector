@@ -1,4 +1,137 @@
-/**
- * All of the CSS for your admin-specific functionality should be
- * included in this file.
- */
+.admin-performance-inspector-wrap {
+	max-width: 1200px;
+}
+
+.api-header {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	margin-bottom: 25px;
+	margin-top: 20px;
+}
+
+.api-logo svg {
+	width: 36px;
+	height: 36px;
+	color: #2271b1;
+}
+
+.api-header h1 {
+	margin: 0;
+	font-size: 26px;
+	font-weight: 600;
+	line-height: 1;
+}
+
+.api-dashboard {
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+}
+
+.api-section {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 24px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .04);
+}
+
+.api-section h2 {
+	margin-top: 0;
+	margin-bottom: 20px;
+	padding-bottom: 12px;
+	border-bottom: 1px solid #f0f0f1;
+	font-size: 18px;
+	color: #1d2327;
+}
+
+.api-metrics {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 20px;
+}
+
+.api-metric {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 24px 15px;
+	background: #fcfcfc;
+	border: 1px solid #e2e4e7;
+	border-radius: 6px;
+	text-align: center;
+}
+
+.api-metric strong {
+	font-size: 14px;
+	color: #50575e;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.api-metric span {
+	font-size: 32px;
+	font-weight: 600;
+}
+
+.api-green {
+	color: #008a20;
+}
+
+.api-yellow {
+	color: #d6b000;
+}
+
+.api-red {
+	color: #d63638;
+}
+
+.api-blue {
+	color: #2271b1;
+}
+
+.api-progress-bar {
+	width: 100%;
+	height: 8px;
+	background: #e2e4e7;
+	border-radius: 4px;
+	overflow: hidden;
+	margin-top: 10px;
+}
+
+.api-progress-inner {
+	height: 100%;
+	background: #2271b1;
+	transition: width 0.3s ease;
+}
+
+.api-badge {
+	padding: 4px 8px;
+	border-radius: 4px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #fff;
+	display: inline-block;
+}
+
+.api-badge-normal {
+	background: #008a20;
+}
+
+.api-badge-slow {
+	background: #d63638;
+}
+
+.api-row-slow {
+	background-color: rgba(214, 54, 56, 0.05) !important;
+}
+
+table.wp-list-table {
+	border: 1px solid #e2e4e7;
+	margin-top: 0;
+}
+
+table.wp-list-table th {
+	font-weight: 600;
+}

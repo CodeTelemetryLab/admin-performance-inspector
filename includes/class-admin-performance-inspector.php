@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * The file that defines the core plugin class
  *
@@ -58,6 +62,14 @@ class Admin_Performance_Inspector {
 	protected $version;
 
 	/**
+	 * The profiler object.
+	 *
+	 * @since    1.0.0
+	 * @access   protected
+	 */
+	protected $profiler;
+
+	/**
 	 * Define the core functionality of the plugin.
 	 *
 	 * Set the plugin name and the plugin version that can be used throughout the plugin.
@@ -112,6 +124,11 @@ class Admin_Performance_Inspector {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-admin-performance-inspector-i18n.php';
 
 		/**
+		 * The class responsible for profiling metrics.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-admin-performance-inspector-profiler.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-admin-performance-inspector-admin.php';
@@ -123,6 +140,7 @@ class Admin_Performance_Inspector {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-admin-performance-inspector-public.php';
 
 		$this->loader = new Admin_Performance_Inspector_Loader();
+		$this->profiler = new Admin_Performance_Inspector_Profiler();
 
 	}
 
@@ -152,11 +170,12 @@ class Admin_Performance_Inspector {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Admin_Performance_Inspector_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Admin_Performance_Inspector_Admin( $this->get_plugin_name(), $this->get_version(), $this->profiler );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_admin_menu' );
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'handle_actions' );
 	}
 
 	/**

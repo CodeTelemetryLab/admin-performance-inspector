@@ -107,7 +107,7 @@ $admipein_total_color = $admipein_total_time > 1000 ? 'api-red' : ( $admipein_to
 		<div class="api-section">
 			<h2>
                 <?php esc_html_e( 'Plugin Load Performance', 'admin-performance-inspector' ); ?>
-                <?php if ( empty( $GLOBALS['api_plugin_load_times'] ) ) : ?>
+				<?php if ( empty( $GLOBALS['admipein_plugin_load_times'] ) ) : ?>
                     <span class="api-badge api-badge-slow" style="margin-left: 10px; font-size: 11px;"><?php esc_html_e( 'MU Profiler Missing - Please reactivate plugin', 'admin-performance-inspector'); ?></span>
                 <?php endif; ?>
             </h2>

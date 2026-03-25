@@ -3,10 +3,10 @@
 /**
  * Fired when the plugin is uninstalled.
  *
- * @link       https://codetelemetry.com
+ * @link       https://github.com/CodeTelemetryLab
  * @since      1.0.0
  *
- * @package    Admin_Performance_Inspector
+ * @package    Admipein_Core
  */
 
 // If uninstall not called from WordPress, then exit.
@@ -14,7 +14,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-delete_option( 'api_slow_query_threshold' );
-delete_option( 'api_enable_query_profiling' );
-delete_option( 'api_enable_hook_profiling' );
-delete_option( 'api_enable_memory_monitoring' );
+delete_option( 'admipein_slow_query_threshold' );
+delete_option( 'admipein_enable_query_profiling' );
+delete_option( 'admipein_enable_hook_profiling' );
+delete_option( 'admipein_enable_memory_monitoring' );

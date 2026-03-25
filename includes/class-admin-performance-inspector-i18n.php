@@ -10,11 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @link       https://codetelemetry.com
+ * @link       https://github.com/CodeTelemetryLab
  * @since      1.0.0
  *
- * @package    Admin_Performance_Inspector
- * @subpackage Admin_Performance_Inspector/includes
+ * @package    Admipein_Core
+ * @subpackage Admipein_Core/includes
  */
 
 /**
@@ -24,11 +24,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Admin_Performance_Inspector
- * @subpackage Admin_Performance_Inspector/includes
+ * @package    Admipein_Core
+ * @subpackage Admipein_Core/includes
  * @author     CodeTelemetry Labs <codetelemetry@gmail.com>
  */
-class Admin_Performance_Inspector_i18n {
+class Admipein_I18n {
 
 
 	/**

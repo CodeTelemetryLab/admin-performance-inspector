@@ -10,11 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @link       https://codetelemetry.com
+ * @link       https://github.com/CodeTelemetryLab
  * @since      1.0.0
  *
- * @package    Admin_Performance_Inspector
- * @subpackage Admin_Performance_Inspector/includes
+ * @package    Admipein_Core
+ * @subpackage Admipein_Core/includes
  */
 
 /**
@@ -27,11 +27,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Admin_Performance_Inspector
- * @subpackage Admin_Performance_Inspector/includes
+ * @package    Admipein_Core
+ * @subpackage Admipein_Core/includes
  * @author     CodeTelemetry Labs <codetelemetry@gmail.com>
  */
-class Admin_Performance_Inspector {
+class Admipein_Core {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -39,7 +39,7 @@ class Admin_Performance_Inspector {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Admin_Performance_Inspector_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Admipein_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -79,8 +79,8 @@ class Admin_Performance_Inspector {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		if ( defined( 'ADMIN_PERFORMANCE_INSPECTOR_VERSION' ) ) {
-			$this->version = ADMIN_PERFORMANCE_INSPECTOR_VERSION;
+		if ( defined( 'ADMIPEIN_VERSION' ) ) {
+			$this->version = ADMIPEIN_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}
@@ -98,10 +98,10 @@ class Admin_Performance_Inspector {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Admin_Performance_Inspector_Loader. Orchestrates the hooks of the plugin.
-	 * - Admin_Performance_Inspector_i18n. Defines internationalization functionality.
-	 * - Admin_Performance_Inspector_Admin. Defines all hooks for the admin area.
-	 * - Admin_Performance_Inspector_Public. Defines all hooks for the public side of the site.
+	 * - Admipein_Loader. Orchestrates the hooks of the plugin.
+	 * - Admipein_I18n. Defines internationalization functionality.
+	 * - Admipein_Admin. Defines all hooks for the admin area.
+	 * - Admipein_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -139,15 +139,15 @@ class Admin_Performance_Inspector {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-admin-performance-inspector-public.php';
 
-		$this->loader = new Admin_Performance_Inspector_Loader();
-		$this->profiler = new Admin_Performance_Inspector_Profiler();
+		$this->loader = new Admipein_Loader();
+		$this->profiler = new Admipein_Profiler();
 
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Admin_Performance_Inspector_i18n class in order to set the domain and to register the hook
+	 * Uses the Admipein_I18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -155,7 +155,7 @@ class Admin_Performance_Inspector {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Admin_Performance_Inspector_i18n();
+		$plugin_i18n = new Admipein_I18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -170,7 +170,7 @@ class Admin_Performance_Inspector {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Admin_Performance_Inspector_Admin( $this->get_plugin_name(), $this->get_version(), $this->profiler );
+		$plugin_admin = new Admipein_Admin( $this->get_plugin_name(), $this->get_version(), $this->profiler );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -187,7 +187,7 @@ class Admin_Performance_Inspector {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Admin_Performance_Inspector_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new Admipein_Public( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -218,7 +218,7 @@ class Admin_Performance_Inspector {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Admin_Performance_Inspector_Loader    Orchestrates the hooks of the plugin.
+	 * @return    Admipein_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Admin_Performance_Inspector_Activator {
+class Admipein_Activator {
 
 	public static function activate() {
 
@@ -24,24 +24,24 @@ class Admin_Performance_Inspector_Activator {
 		
 		$mu_plugin_code = "<?php\n" .
 		"/**\n" .
-		" * Plugin Name: API Profiler Drop-in\n" .
+		" * Plugin Name: Admipein Profiler Drop-in\n" .
 		" * Description: Required by Admin Performance Inspector for accurate plugin load times.\n" .
 		" */\n" .
-		"if ( ! defined( 'API_PLUGIN_LOAD_TIMES' ) ) {\n" .
-		"    define( 'API_PLUGIN_LOAD_TIMES', true );\n" .
-		"    global \$api_plugin_load_times;\n" .
-		"    \$api_plugin_load_times = array();\n" .
+		"if ( ! defined( 'ADMIPEIN_PLUGIN_LOAD_TIMES' ) ) {\n" .
+		"    define( 'ADMIPEIN_PLUGIN_LOAD_TIMES', true );\n" .
+		"    global \$admipein_plugin_load_times;\n" .
+		"    \$admipein_plugin_load_times = array();\n" .
 		"    add_action( 'muplugins_loaded', function() {\n" .
-		"        global \$api_plugin_last_time;\n" .
-		"        \$api_plugin_last_time = microtime( true );\n" .
+		"        global \$admipein_plugin_last_time;\n" .
+		"        \$admipein_plugin_last_time = microtime( true );\n" .
 		"    }, 99999 );\n" .
 		"    add_action( 'plugin_loaded', function( \$plugin ) {\n" .
-		"        global \$api_plugin_load_times, \$api_plugin_last_time;\n" .
+		"        global \$admipein_plugin_load_times, \$admipein_plugin_last_time;\n" .
 		"        \$now = microtime( true );\n" .
-		"        if ( isset( \$api_plugin_last_time ) ) {\n" .
-		"            \$api_plugin_load_times[\$plugin] = ( \$now - \$api_plugin_last_time ) * 1000;\n" .
+		"        if ( isset( \$admipein_plugin_last_time ) ) {\n" .
+		"            \$admipein_plugin_load_times[\$plugin] = ( \$now - \$admipein_plugin_last_time ) * 1000;\n" .
 		"        }\n" .
-		"        \$api_plugin_last_time = \$now;\n" .
+		"        \$admipein_plugin_last_time = \$now;\n" .
 		"    }, 0 );\n" .
 		"}\n";
 		
@@ -50,15 +50,15 @@ class Admin_Performance_Inspector_Activator {
 		global $wp_filesystem;
 		
 		if ( $wp_filesystem ) {
-			$wp_filesystem->put_contents( $mu_dir . '/api-profiler-mu.php', $mu_plugin_code, FS_CHMOD_FILE );
+			$wp_filesystem->put_contents( $mu_dir . '/admipein-profiler-mu.php', $mu_plugin_code, FS_CHMOD_FILE );
 		} else {
-			@file_put_contents( $mu_dir . '/api-profiler-mu.php', $mu_plugin_code );
+			@file_put_contents( $mu_dir . '/admipein-profiler-mu.php', $mu_plugin_code );
 		}
 
-		add_option( 'api_slow_query_threshold', 100 );
-		add_option( 'api_enable_query_profiling', 1 );
-		add_option( 'api_enable_hook_profiling', 1 );
-		add_option( 'api_enable_memory_monitoring', 1 );
+		add_option( 'admipein_slow_query_threshold', 100 );
+		add_option( 'admipein_enable_query_profiling', 1 );
+		add_option( 'admipein_enable_hook_profiling', 1 );
+		add_option( 'admipein_enable_memory_monitoring', 1 );
 
 	}
 

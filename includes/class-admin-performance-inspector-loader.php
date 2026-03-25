@@ -7,11 +7,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Register all actions and filters for the plugin
  *
- * @link       https://codetelemetry.com
+ * @link       https://github.com/CodeTelemetryLab
  * @since      1.0.0
  *
- * @package    Admin_Performance_Inspector
- * @subpackage Admin_Performance_Inspector/includes
+ * @package    Admipein_Core
+ * @subpackage Admipein_Core/includes
  */
 
 /**
@@ -21,11 +21,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Admin_Performance_Inspector
- * @subpackage Admin_Performance_Inspector/includes
+ * @package    Admipein_Core
+ * @subpackage Admipein_Core/includes
  * @author     CodeTelemetry Labs <codetelemetry@gmail.com>
  */
-class Admin_Performance_Inspector_Loader {
+class Admipein_Loader {
 
 	/**
 	 * The array of actions registered with WordPress.

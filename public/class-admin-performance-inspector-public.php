@@ -7,11 +7,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * The public-facing functionality of the plugin.
  *
- * @link       https://codetelemetry.com
+ * @link       https://github.com/CodeTelemetryLab
  * @since      1.0.0
  *
- * @package    Admin_Performance_Inspector
- * @subpackage Admin_Performance_Inspector/public
+ * @package    Admipein_Core
+ * @subpackage Admipein_Core/public
  */
 
 /**
@@ -20,11 +20,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the public-facing stylesheet and JavaScript.
  *
- * @package    Admin_Performance_Inspector
- * @subpackage Admin_Performance_Inspector/public
+ * @package    Admipein_Core
+ * @subpackage Admipein_Core/public
  * @author     CodeTelemetry Labs <codetelemetry@gmail.com>
  */
-class Admin_Performance_Inspector_Public {
+class Admipein_Public {
 
 	/**
 	 * The ID of this plugin.
@@ -69,10 +69,10 @@ class Admin_Performance_Inspector_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Admin_Performance_Inspector_Loader as all of the hooks are defined
+		 * defined in Admipein_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Admin_Performance_Inspector_Loader will then create the relationship
+		 * The Admipein_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
@@ -92,10 +92,10 @@ class Admin_Performance_Inspector_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Admin_Performance_Inspector_Loader as all of the hooks are defined
+		 * defined in Admipein_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Admin_Performance_Inspector_Loader will then create the relationship
+		 * The Admipein_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */

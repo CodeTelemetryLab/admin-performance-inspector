@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Admin_Performance_Inspector_Admin {
+class Admipein_Admin {
 
 	private $plugin_name;
 	private $version;
@@ -41,16 +41,16 @@ class Admin_Performance_Inspector_Admin {
 	}
 
 	public function display_plugin_setup_page() {
-		$admin_performance_inspector_total_time = ( microtime( true ) - (defined('API_START_TIME') ? API_START_TIME : microtime(true)) ) * 1000;
+		$admipein_total_time = ( microtime( true ) - (defined('ADMIPEIN_START_TIME') ? ADMIPEIN_START_TIME : microtime(true)) ) * 1000;
 		$profiler = $this->profiler;
 		require_once plugin_dir_path( __FILE__ ) . 'partials/admin-performance-inspector-admin-display.php';
 	}
 
 	public function handle_actions() {
-		if ( isset( $_POST['api_action'] ) && isset( $_POST['api_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['api_nonce'] ) ), 'api_dashboard_action' ) ) {
+		if ( isset( $_POST['admipein_action'] ) && isset( $_POST['admipein_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['admipein_nonce'] ) ), 'admipein_dashboard_action' ) ) {
 			if ( ! current_user_can( 'manage_options' ) ) wp_die();
 			
-			$action = sanitize_text_field( wp_unslash( $_POST['api_action'] ) );
+			$action = sanitize_text_field( wp_unslash( $_POST['admipein_action'] ) );
 			$wp_config_path = ABSPATH . 'wp-config.php';
 			if ( ! file_exists( $wp_config_path ) ) {
 				$wp_config_path = dirname( ABSPATH ) . '/wp-config.php';

@@ -9,11 +9,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * This file is used to markup the public-facing aspects of the plugin.
  *
- * @link       https://codetelemetry.com
+ * @link       https://github.com/CodeTelemetryLab
  * @since      1.0.0
  *
- * @package    Admin_Performance_Inspector
- * @subpackage Admin_Performance_Inspector/public/partials
+ * @package    Admipein_Core
+ * @subpackage Admipein_Core/public/partials
  */
 ?>
 

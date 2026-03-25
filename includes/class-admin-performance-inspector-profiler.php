@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Admin_Performance_Inspector_Profiler {
+class Admipein_Profiler {
 	public $hook_times = array();
 	public $plugin_times = array();
 	public $query_data = array();
@@ -46,9 +46,9 @@ class Admin_Performance_Inspector_Profiler {
 	}
 
 	public function profile_plugins() {
-		global $api_plugin_load_times;
-		if ( ! empty( $api_plugin_load_times ) ) {
-			foreach ( $api_plugin_load_times as $plugin => $time ) {
+		global $admipein_plugin_load_times;
+		if ( ! empty( $admipein_plugin_load_times ) ) {
+			foreach ( $admipein_plugin_load_times as $plugin => $time ) {
 				$this->plugin_times[$plugin] = array(
 					'name' => dirname( plugin_basename( $plugin ) ),
 					'time' => $time
@@ -82,7 +82,7 @@ class Admin_Performance_Inspector_Profiler {
 			'queries' => array()
 		);
 		if ( defined( 'SAVEQUERIES' ) && SAVEQUERIES && ! empty( $wpdb->queries ) ) {
-			$threshold = get_option( 'api_slow_query_threshold', 100 ) / 1000;
+			$threshold = get_option( 'admipein_slow_query_threshold', 100 ) / 1000;
 			foreach ( $wpdb->queries as $q ) {
 				$time = $q[1];
 				$stats['total']++;
